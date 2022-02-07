@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
+  background-color: ${(props) => props.theme.backgroundColor}
 `;
 
 const RotationAnimation = keyframes`
@@ -21,12 +22,13 @@ const RotationAnimation = keyframes`
 
 const Emoji = styled.span`
   font-size: 36px;
+  color: ${(props) => props.theme.backgroundColor};
 `;
 
 const Box = styled.div`
   height: 200px;
   width: 200px;
-  background-color: tomato;
+  background-color: ${(props) => props.theme.textColor};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +38,7 @@ const Box = styled.div`
   /*+ element tag 말고도 다른 styled component를 가져올 수도 있음*/
   ${Emoji}:hover {
       font-size:20px;
+      color: ${(props) => props.theme.backgroundColor};
     }
   }
 `;
