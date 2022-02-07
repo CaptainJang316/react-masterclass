@@ -1,50 +1,53 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Father = styled.div`
-  display: block;
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const RotationAnimation = keyframes`
+  0% {
+    transform:rotate(0deg);
+    border-radius:0px;
+  }
+  50% {
+    transform:rotate(360deg);
+    border-radius:100px;
+  }
+  100% {
+    transform:rotate(360deg);
+    border-radius: 0px;
+  }
 `;
 
 const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
-`;
-
-const Text = styled.span`
-  color: white;
-`;
-
-const Circle = styled(Box)`
-  border-radius: 50px;
-`;
-
-const Btn = styled.button`
-  color: white;
+  height: 200px;
+  width: 200px;
   background-color: tomato;
-  border: 0;
-  border-radius: 15px;
-`;
-
-const Input = styled.input.attrs({required: true, minlength: 10})`
-  background-color: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation:${RotationAnimation} 1s linear infinite;
+  
+  /*이렇게 styled component 안에 그 하위로 사용되는 element에 대한 css도 정의 가능*/
+  span {
+    font-size: 50px;
+    /*'&'는 span 자체를 지칭함.*/
+    &:hover {
+      font-size:20px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
 `;
 
 
 function App() {
-  return (
-    <Father as="header">
-      <Btn as="a" href="">Log in</Btn>
-      <input />
-      <input />
-      <input />
-      <input />
-      <input />
-      <input />
-      <Btn>Log in</Btn>
-      <Box bgColor="teal"/>
-      <Circle bgColor="tomato"/>
-    </Father>
-  );
+  return <Wrapper>
+    <Box>
+      <span>adsf</span>
+    </Box>
+  </Wrapper>;
 }
 
 export default App;
